@@ -24,19 +24,18 @@ class Venta{
   const cantidad
   const fechaDeVenta
   const tipoDeVenta // si es tarjeta o efectivo
-  const cuotas // el ejercicio no especifica si las cuotas son solo para tarjeta o si efectivo tambien puede tener cuotas
+  const cuotas 
   var precioTotal = listaPrendas.sum(prenda => prenda.precioTotal())
   ventasTotales() = tipoDeVenta.darCantidadTotal(precioTotal,cuotas)
 }
 
 object efectivo{
-  darCantidadTotal(cantidadDeVentas,cuotas) = cantidadDeVentas
+  darCantidadTotal(precioTotal,cuotas) = cantidadDeVentas
 }
 
 object tarjeta{
   const coeficineteFijo
-  var cuotas
-  darCantidadTotal(cantidadDeVentas,cuotas) = cantidadDeVentas + cuotas*coeficienteFijo + cantidadDeVentas*0.01
+  darCantidadTotal(precioTotal,cuotas) = cantidadDeVentas + cuotas*coeficienteFijo + cantidadDeVentas*0.01
 }
 
 object registro{
