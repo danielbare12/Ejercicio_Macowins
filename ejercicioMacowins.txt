@@ -1,0 +1,46 @@
+class Prenda {
+  const precioBase
+  const tipo
+  var estado
+  precioTotal() = estado.darPrecio(precioBase)
+  tipo() = tipo
+}
+
+object nuevo{
+  darPrecio(precioBase) = precioBase
+}
+
+object promocion{
+  valorFijo
+  darPrecio(precioBase) = precioBase - valorFijo
+}
+
+object liquidacion{
+  darPrecio(precioBase) = precioBase / 2
+}
+
+class Venta{
+  const listaPrendas
+  const cantidad
+  const fechaDeVenta
+  const tipoDeVenta // si es tarjeta o efectivo
+  const cuotas // el ejercicio no especifica si las cuotas son solo para tarjeta o si efectivo tambien puede tener cuotas
+  var precioTotal = listaPrendas.sum(prenda => prenda.precioTotal())
+  ventasTotales() = tipoDeVenta.darCantidadTotal(precioTotal,cuotas)
+}
+
+object efectivo{
+  darCantidadTotal(cantidadDeVentas,cuotas) = cantidadDeVentas
+}
+
+object tarjeta{
+  const coeficineteFijo
+  var cuotas
+  darCantidadTotal(cantidadDeVentas,cuotas) = cantidadDeVentas + cuotas*coeficienteFijo + cantidadDeVentas*0.01
+}
+
+object registro{
+  const ventas
+  agregarVentas(venta) = ventas.add(venta)
+  ventasPorDia(unaFecha) = ventas.sum.filter(venta => venta.fechaDeVentas() == unaFecha)
+}
