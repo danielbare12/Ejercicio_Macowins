@@ -1,0 +1,43 @@
+class NoPoseeCategoriaColorSecundarioException(var msg: String) : RuntimeException(msg)
+
+class Prenda {
+	string tipo
+	this.tipo(){
+		if(tipo == NULL){
+			throw BusinessException("La prenda no posee tipo, la prenda debe poseer un tipo que tenga que ver con su categoria")
+		}
+	}
+	string colorPrincilpal
+	this.colorPrincipal(){
+		if(tipo == NULL){
+			throw BusinessException("La prenda no posee un color princial")
+		}
+	}
+	string colorSecundario
+	string categoria
+	this.categoria(){
+		if(tipo == NULL){
+			throw BusinessException("La prenda no posee categoria, la prenda debe poseer un categoria que tenga que ver con su tipo")
+		}
+	}
+	string material
+	this.material(){
+		if(tipo == NULL){
+			throw BusinessException("La prenda no posee material o tipo de tela")
+		}
+	}
+}
+
+class Usuario{
+	listaPrendas
+	ListaTipoDePrendas() = listaPrendas.map(prenda => prenda.tipo())
+	mostrarCategoriaPrenda(prenda) = prenda.cantegoria()
+	mostrarMaterialPrenda(prenda) = prenda.material()
+	mostrarColorSecundarioPrenda(prenda).try{
+		prenda.colorSecundario()
+	}
+	.catch(NoPoseeCategoriaColorSecundarioException){
+		system.out.print("No posee color secundario")
+	}
+	
+}
