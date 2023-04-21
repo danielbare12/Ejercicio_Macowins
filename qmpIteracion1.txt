@@ -2,27 +2,35 @@ class NoPoseeCategoriaColorSecundarioException(var msg: String) : RuntimeExcepti
 
 class Prenda {
 	string tipo
-	this.tipo(){
-		if(tipo == NULL){
+	tipo(){
+		if(tipo != NULL){
+			this.tipo
+		} else {
 			throw BusinessException("La prenda no posee tipo, la prenda debe poseer un tipo que tenga que ver con su categoria")
 		}
 	}
 	string colorPrincilpal
-	this.colorPrincipal(){
-		if(tipo == NULL){
+	colorPrincipal(){
+		if(tipo != NULL){
+			this.coloPrincipal
+		} else {
 			throw BusinessException("La prenda no posee un color princial")
 		}
 	}
 	string colorSecundario
 	string categoria
-	this.categoria(){
-		if(tipo == NULL){
+	categoria(){
+		if(tipo != NULL){
+			this.categoria
+		} else {
 			throw BusinessException("La prenda no posee categoria, la prenda debe poseer un categoria que tenga que ver con su tipo")
 		}
 	}
 	string material
-	this.material(){
-		if(tipo == NULL){
+	material(){
+		if(tipo != NULL){
+			this.material
+		} else {
 			throw BusinessException("La prenda no posee material o tipo de tela")
 		}
 	}
