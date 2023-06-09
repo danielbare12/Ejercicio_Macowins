@@ -1,7 +1,9 @@
 class NoPoseeCategoriaColorSecundarioException(var msg: String) : RuntimeException(msg)
 
 class Prenda {
-	string tipo
+	TipoPrenda tipo
+	Categoria categoria
+	Formalidad
 	tipo(){
 		if(tipo != NULL){
 			this.tipo
@@ -18,7 +20,7 @@ class Prenda {
 		}
 	}
 	string colorSecundario
-	string categoria
+	
 	categoria(){
 		if(tipo != NULL){
 			this.categoria
@@ -34,8 +36,24 @@ class Prenda {
 			throw BusinessException("La prenda no posee material o tipo de tela")
 		}
 	}
+	public esSuperior(){
+        this.categoria == Categoria.PARTE_SUPERIOR;
+    }
+
 }
 
+enum Categoria {
+    PARTE_SUPERIOR, PARTE_INFERIOR, CALZADO
+}
+
+
+enum Formalidad {
+    FORMAL, INFORMAL, NEUTRA
+}
+
+enum TipoPrenda {
+    REMERA, PANTALON, CAMPERA, CAMISA, SACO, SHORT, POLLERA,...
+}
 class Usuario{
 	listaPrendas
 	ListaTipoDePrendas() = listaPrendas.map(prenda => prenda.tipo())
@@ -49,3 +67,32 @@ class Usuario{
 	}
 	
 }
+
+class Borrador {
+  especificarTipo(...) {  }
+  especificarMaterial(...) {
+   
+  }
+
+  construir() {
+  
+  }
+}
+
+Borrador borrador = new Borrador();
+borrador.especificarTipo(REMERA);
+borrador.especificarMaterial(ALGODON);
+
+Prenda prenda = borrador.construir();
+
+class Sugerencia {
+    Prenda superior;
+    Prenda inferior;
+    Prenda calzado;
+
+    public Sugerencia(Prenda superior, Prenda inferior, Prenda calzado){
+    ...
+    }
+
+}
+
