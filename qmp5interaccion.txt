@@ -1,0 +1,32 @@
+class Usuario{
+  Guardaropa<List> guardaropas
+  agregarGuardaropa(guardaropa){
+    guardaropas.(guardaropa)
+  }
+}
+
+class Guardaropa{
+  Prenda<List> prendas
+  agregarPrenda(prenda){
+    prendas.add(prenda)
+  }
+  
+  quitarPrenda(prenda){
+    prendas.remove(prenda)
+  }
+}
+
+interface propuesta(){
+  proponerEn(guardaropa)
+  proponerQuitarEn(guardaropa)
+  desacerCambios(guardaropa)
+}
+
+class PropuestaQuitado implement propuesta(){
+  Prenda prenda
+}
+class PropuestaAgregado implement propuesta(){
+  Prenda prenda
+}
+
+new Prenda()
